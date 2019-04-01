@@ -8,13 +8,29 @@
     <title>The same origin policy</title>
 </head>
 <body>
-    <h1>Hello world</h1>
+<h1>Hello world</h1>
 
-    <iframe name="iframe1" width="400" height="200" src="/sample-same-origin-policy/inner.html">
-    </iframe>
+<iframe id="iframe1" width="400" height="200" src="/sample-same-origin-policy/inner.html">
+</iframe>
 
-    <br>
+<br>
 
+<input type="button" onclick="go()" value="Getting a password"/>
 
+<br>
+
+<span id="out"></span>
+
+<script>
+    function go() {
+        try {
+            var iframe = document.getElementById('iframe1');
+            var x = iframe.contentWindow.document.getElementById('your-password').value;
+            document.getElementById('out').textContent = x;
+        } catch (e) {
+            console.log(e.message);
+        }
+    }
+</script>
 </body>
 </html>
